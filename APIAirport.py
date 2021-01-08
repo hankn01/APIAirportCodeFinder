@@ -18,7 +18,7 @@ def insert_text():
     findvalue = 0
     CODE = ins.get()
     
-    find_code = CODE
+    find_code = CODE.upper()
     for pgnoi in range(136) :
         queryParams = '?' + urlencode(
             {
@@ -47,9 +47,11 @@ def insert_text():
             #messagebox.showinfo(title='코드명 없음', message='해당 코드명의 공항이 없습니다.')
 #tk
 window = tk.Tk()
+window.title("IATA Airport Code Finder")
+window.iconbitmap(default='IATAicon.ico')
 window.configure(background='#6200EE')
 
-Lbl = tk.Label(window,justify='left',bg='#6200EE',fg='white',text="수하물 발송 전 공항 코드가 올바른지 확인해 보세요.\nThis is IATA airport code finder.\nPlease input IATA code.")
+Lbl = tk.Label(window,justify='left',bg='#6200EE',fg='white',text="수하물 발송 전 공항 코드가 올바른지 확인해 보세요.\n수하물 태그의 바코드 위 또는 아래의 영문자 세 자리를 입력해 주세요.\nThis is IATA airport code finder.\nPlease input IATA code.")
 Lbl.grid(row=0,column=0)
 #Lbl.pack()
 
@@ -59,23 +61,17 @@ ins.grid(row=1,column=0)
 
 insBtn = tk.Button(window, text="확인",command=insert_text,relief="solid",bg="#2980B9",fg="white")
 insBtn.grid(row=1,column=1)
+insBtn.place(x=290,y=63)
 #insBtn.pack()
 
 resultCode = tk.Label(window,text="")
 resultCode.grid(row=2,column=0)
 #resultCode.pack()
 
-copyrightlbl = tk.Label(window,justify='left',bg='#6200EE',fg='white',text="본 프로그램의 저작권은 제작자에게 있으며, 공항 정보 API의 저작권은 한국공항공사에 있습니다. \nAPI 활용 및 저작권 규정은 한국공항공사 및 대한민국 정부의 규정에 따릅니다.")
+copyrightlbl = tk.Label(window,justify='left',bg='#6200EE',fg='white',text="본 프로그램의 저작권은 제작자에게 있으며\n공항 정보 API의 저작권은 한국공항공사에 있습니다. \nAPI 활용 및 저작권 규정은 한국공항공사 및 대한민국 정부의 규정에 따릅니다.")
 copyrightlbl.grid(row=3,column=0)
 #copyrightlbl.pack()
 
-isBtn = tk.Button(window, text="이용약관")
-isBtn.grid(row=4,column=0)
-#isBtn.pack()
-
-infoBtn = tk.Button(window, text="프로그램 정보")
-infoBtn.grid(row=4,column=1)
-#infoBtn.pack()
 
 #tk end
 window.mainloop()
